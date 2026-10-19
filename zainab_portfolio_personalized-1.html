@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f2eb">
+  <meta name="description" content="The personal portfolio of Zainab Ansari — curious about psychology, human behaviour, creativity, and ideas beyond the obvious.">
+  <title>Zainab Ansari — Personal Portfolio</title>
+  <style>
+    :root {
+      --paper: #f5f2eb;
+      --paper-deep: #ebe5d9;
+      --ink: #242722;
+      --muted: #73766e;
+      --line: rgba(36, 39, 34, .17);
+      --accent: #68745c;
+      --accent-dark: #46513d;
+      --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --page: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+    .wrap { width: min(var(--page), calc(100% - 48px)); margin-inline: auto; }
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 25px 0; border-bottom: 1px solid var(--line);
+    }
+    .wordmark { font-family: var(--serif); font-size: 1.15rem; text-decoration: none; letter-spacing: -.035em; }
+    .wordmark span { color: var(--accent); }
+    .nav { display: flex; gap: 25px; align-items: center; }
+    .nav a { font-size: .77rem; text-decoration: none; color: var(--muted); transition: color .2s; }
+    .nav a:hover { color: var(--ink); }
+    .nav .nav-contact { color: var(--ink); border-bottom: 1px solid var(--accent); padding-bottom: 3px; }
+    .hero {
+      min-height: 560px; display: grid; grid-template-columns: 1.25fr .75fr;
+      align-items: center; gap: 48px; padding: 76px 0 82px;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; color: var(--accent-dark);
+      text-transform: uppercase; letter-spacing: .16em; font-size: .68rem; font-weight: 650;
+    }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      font-family: var(--serif); font-weight: 400; letter-spacing: -.065em;
+      font-size: clamp(3.2rem, 7vw, 6.2rem); line-height: 1.01; margin: 22px 0 20px;
+    }
+    h1 em { color: var(--accent); font-weight: 400; }
+    .hero-copy { max-width: 440px; color: var(--muted); font-size: .96rem; line-height: 1.8; border-left: 1px solid rgba(104,116,92,.5); padding-left: 15px; }
+    .hero-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 27px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      padding: 13px 18px; background: var(--ink); color: var(--paper);
+      border: 1px solid var(--ink); border-radius: 2px; text-decoration: none;
+      font-size: .8rem; transition: background .2s, color .2s, transform .2s;
+    }
+    .button:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); }
+    .text-link { font-size: .8rem; text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+    .hero-art { min-height: 360px; position: relative; display: grid; place-items: center; }
+    .orbit { width: min(100%, 350px); aspect-ratio: 1; border: 1px solid var(--line); border-radius: 50%; position: relative; display: grid; place-items: center; }
+    .orbit::before, .orbit::after { content: ""; position: absolute; border: 1px solid var(--line); border-radius: 50%; }
+    .orbit::before { inset: 10%; }
+    .orbit::after { inset: 22%; border-color: rgba(104,116,92,.45); }
+    .orbit-core {
+      width: 35%; aspect-ratio: 1; border-radius: 50%; background: var(--paper-deep);
+      display: grid; place-items: center; color: var(--accent-dark);
+      font-family: var(--serif); font-size: 3.3rem; font-style: italic; z-index: 1;
+    }
+    .orbit-label { position: absolute; font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .orbit-label.top { top: 7%; left: 50%; transform: translateX(-50%); }
+    .orbit-label.right { right: -2%; top: 50%; transform: translateY(-50%); }
+    .orbit-label.bottom { bottom: 7%; left: 50%; transform: translateX(-50%); }
+    .orbit-label.left { left: -5%; top: 50%; transform: translateY(-50%); }
+    .section { padding: 92px 0; border-top: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: .7fr 1.3fr; gap: 40px; margin-bottom: 45px; }
+    .section-kicker { color: var(--accent); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; padding-top: 9px; }
+    h2 { font-family: var(--serif); font-size: clamp(2.2rem, 4.8vw, 4rem); line-height: 1.08; letter-spacing: -.05em; font-weight: 400; margin-bottom: 0; }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
+    .about-note { background: var(--paper-deep); padding: 30px; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; }
+    .about-note .quote { font-family: var(--serif); font-size: 1.65rem; line-height: 1.25; letter-spacing: -.035em; }
+    .about-note small { color: var(--muted); text-transform: uppercase; letter-spacing: .12em; font-size: .64rem; }
+    .about-copy { color: var(--muted); max-width: 600px; }
+    .about-copy p:first-child { color: var(--ink); font-family: var(--serif); font-size: 1.55rem; line-height: 1.4; letter-spacing: -.025em; }
+    .values { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+    .pill { border: 1px solid var(--line); border-radius: 100px; padding: 7px 12px; color: var(--accent-dark); font-size: .72rem; }
+    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .project { border: 1px solid var(--line); padding: 23px; min-height: 275px; display: flex; flex-direction: column; transition: transform .25s, background .25s; }
+    .project:hover { transform: translateY(-4px); background: rgba(255,255,255,.25); }
+    .project-top { display: flex; justify-content: space-between; gap: 10px; align-items: center; color: var(--muted); font-size: .67rem; text-transform: uppercase; letter-spacing: .1em; }
+    .project-mark { width: 54px; height: 54px; display: grid; place-items: center; background: var(--paper-deep); color: var(--accent-dark); font-family: var(--serif); font-size: 1.6rem; margin: 30px 0 20px; }
+    .project h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; letter-spacing: -.03em; margin-bottom: 9px; }
+    .project p { color: var(--muted); font-size: .83rem; margin-bottom: 20px; }
+    .project-foot { margin-top: auto; padding-top: 15px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; font-size: .69rem; color: var(--accent-dark); }
+    .now-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+    .now-item { border-top: 1px solid var(--accent); padding-top: 17px; }
+    .now-item .number { color: var(--accent); font-family: var(--serif); font-size: 1.4rem; }
+    .now-item h3 { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; margin: 13px 0 7px; }
+    .now-item p { color: var(--muted); font-size: .82rem; margin-bottom: 0; }
+    .contact-panel {
+      background: var(--paper-deep); padding: clamp(28px, 6vw, 68px);
+      display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 30px;
+    }
+    .contact-panel h2 { max-width: 650px; }
+    .contact-panel p { color: var(--muted); max-width: 490px; margin: 18px 0 0; }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding: 25px 0 32px; color: var(--muted); font-size: .7rem; }
+    footer a { text-decoration: none; border-bottom: 1px solid var(--line); }
+    .fade-in { animation: appear .7s ease both; }
+    @keyframes appear { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 34px, var(--page)); }
+      .topbar { padding: 19px 0; align-items: flex-start; }
+      .nav { gap: 13px; flex-wrap: wrap; justify-content: flex-end; }
+      .nav a { font-size: .69rem; }
+      .hero { min-height: auto; grid-template-columns: 1fr; gap: 30px; padding: 76px 0 70px; }
+      h1 { font-size: clamp(3.25rem, 14.5vw, 5.2rem); }
+      .hero-art { min-height: 290px; }
+      .orbit { width: min(76vw, 300px); }
+      .section { padding: 66px 0; }
+      .section-head, .about-grid { grid-template-columns: 1fr; gap: 22px; }
+      .section-head { margin-bottom: 30px; }
+      .about-grid { gap: 25px; }
+      .projects, .now-grid { grid-template-columns: 1fr; }
+      .project { min-height: 245px; }
+      .contact-panel { grid-template-columns: 1fr; align-items: start; }
+      footer { flex-direction: column; gap: 8px; }
+    }
+    @media (max-width: 390px) {
+      .nav { gap: 9px; }
+      .nav a { font-size: .64rem; }
+      .wordmark { font-size: 1rem; }
+      .orbit-label { font-size: .56rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap topbar">
+    <a class="wordmark" href="#home" aria-label="Zainab Ansari home">zainab<span>.</span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#now">Now</a>
+      <a class="nav-contact" href="#contact">Say hello ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wrap hero" id="home">
+      <div class="fade-in">
+        <div class="eyebrow">Personal portfolio · A work in progress</div>
+        <h1>Learning,<br>creating, and<br>thinking <em>beyond.</em></h1>
+        <p class="hero-copy">I’m Zainab Ansari — drawn to thoughtful questions, unexpected perspectives, and the things that make us see the world a little differently.</p>
+        <div class="hero-actions">
+          <a class="button" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
+          <a class="text-link" href="#about">A little about me</a>
+        </div>
+      </div>
+      <div class="hero-art fade-in" aria-label="Abstract orbit illustration representing curiosity and exploration" role="img">
+        <div class="orbit">
+          <span class="orbit-label top">Curiosity</span>
+          <span class="orbit-label right">Create</span>
+          <span class="orbit-label bottom">Become</span>
+          <span class="orbit-label left">Explore</span>
+          <div class="orbit-core">z.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">01 / A little about me</div>
+          <h2>Still becoming.<br>Always observing.</h2>
+        </div>
+        <div class="about-grid">
+          <aside class="about-note">
+            <div class="quote">“There is room to be a beginner and still take your work seriously.”</div>
+            <small>A note to self</small>
+          </aside>
+          <div class="about-copy">
+            <p>I’m a curious learner interested in psychology, human behaviour, creativity, and ideas that challenge ordinary perspectives.</p>
+            <p>I’m interested in psychology, writing, design, learning, and thoughtful conversations. This space is where I can collect what I learn, share what I make, and let my direction take shape through practice.</p>
+            <p>I don't have every answer yet — and I don't think I need to. I'm here to stay curious, build consistently, and make each next thing a little better than the last.</p>
+            <div class="values" aria-label="Personal values">
+              <span class="pill">Psychology</span><span class="pill">Writing</span><span class="pill">Design</span><span class="pill">Learning</span><span class="pill">Thoughtful conversations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">02 / Selected work</div>
+          <h2>A few beginnings.<br>More to come.</h2>
+        </div>
+        <div class="projects">
+          <article class="project">
+            <div class="project-top"><span>01 / Digital</span><span>In progress</span></div>
+            <div class="project-mark" aria-hidden="true">↗</div>
+            <h3>My corner of the internet</h3>
+            <p>This portfolio is my first step into building for the web — learning how structure, style, and code come together.</p>
+            <div class="project-foot"><span>HTML · CSS</span><span>Learning project</span></div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span>02 / Writing</span><span>Idea stage</span></div>
+            <div class="project-mark" aria-hidden="true">“</div>
+            <h3>Notes on being human</h3>
+            <p>A possible collection of short reflections on everyday psychology, perspective, and the questions worth sitting with.</p>
+            <div class="project-foot"><span>Research · Writing</span><span>Concept</span></div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span>03 / Exploration</span><span>To explore</span></div>
+            <div class="project-mark" aria-hidden="true">✳</div>
+            <h3>The next experiment</h3>
+            <p>A space for the next small thing I make — a design study, a useful resource, or an idea turned into something real.</p>
+            <div class="project-foot"><span>Open-ended</span><span>Coming later</span></div>
+          </article>
+        </div>
+        <p style="margin:20px 0 0;color:var(--muted);font-size:.75rem;">These are learning goals and concepts, not claims of completed client work. I'll update this section as I make real projects.</p>
+      </div>
+    </section>
+
+    <section class="section" id="now">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">03 / What I'm exploring</div>
+          <h2>Small steps,<br>real progress.</h2>
+        </div>
+        <div class="now-grid">
+          <article class="now-item">
+            <div class="number">01</div>
+            <h3>Learning to build</h3>
+            <p>Building skills in web design and learning how ideas become thoughtful digital experiences.</p>
+          </article>
+          <article class="now-item">
+            <div class="number">02</div>
+            <h3>Finding my voice</h3>
+            <p>Exploring writing as a way to express ideas, reflect on human behaviour, and communicate with intention.</p>
+          </article>
+          <article class="now-item">
+            <div class="number">03</div>
+            <h3>Following curiosity</h3>
+            <p>Exploring psychology, design, and creative experiments while discovering what kinds of work feel meaningful.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="contact-panel">
+          <div>
+            <div class="section-kicker">04 / Get in touch</div>
+            <h2>Good things can start with a hello.</h2>
+            <p>Have an idea, a thoughtful question, or an opportunity to share? I'd be glad to hear from you.</p>
+          </div>
+          <a class="button" href="mailto:z.deskwork@gmail.com">Send me an email ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span>© <span id="year"></span> Zainab Ansari</span>
+    <span>Made with curiosity, one step at a time.</span>
+    <a href="#home">Back to top ↑</a>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
